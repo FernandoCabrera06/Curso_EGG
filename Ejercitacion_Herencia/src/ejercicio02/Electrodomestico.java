@@ -20,8 +20,6 @@ public class Electrodomestico {
 
     //constructores
     public Electrodomestico() {
-        this.comprobarConsumoEnergetico(consumoEnergetico);
-        this.comprobarColor(color);
     }
 
     public Electrodomestico(double precio, String color, char consumoEnergetico, double peso) {
@@ -29,8 +27,6 @@ public class Electrodomestico {
         this.color = color;
         this.consumoEnergetico = consumoEnergetico;
         this.peso = peso;
-        this.comprobarConsumoEnergetico(consumoEnergetico);
-        this.comprobarColor(color);
     }
 
     //métodos
@@ -66,30 +62,30 @@ public class Electrodomestico {
         this.peso = peso;
     }
 
-    private char comprobarConsumoEnergetico(char letra) {
+    private void comprobarConsumoEnergetico(char letra) {
 
         if (letra == 'A' || letra == 'B' || letra == 'C' || letra == 'D' || letra == 'E') {
-            return letra;
+            this.consumoEnergetico = letra;
         } else {
-            return 'F';
+            this.consumoEnergetico = 'F';
         }
     }
 
-    private String comprobarColor(String color) {
+    private void comprobarColor(String color) {
 
         if (color.equalsIgnoreCase("negro") || color.equalsIgnoreCase("rojo") || color.equalsIgnoreCase("azul") || color.equalsIgnoreCase("gris")) {
-            return "color";
+            this.color = color;
         } else {
-            return "blanco";
+            this.color = "blanco";
         }
     }
-    
-   public void crearElectrodomestico() {
+
+    public void crearElectrodomestico() {
 
         Scanner entrada = new Scanner(System.in).useDelimiter("\n");
 
-        this.precio=1000; //precio de base, 1000
-        
+        this.precio = 1000; //precio de base, 1000
+
         System.out.println("Ingrese color: ");
         this.color = entrada.next();
 
@@ -98,28 +94,34 @@ public class Electrodomestico {
 
         System.out.println("Ingrese peso: ");
         this.peso = entrada.nextDouble();
-        
+
         this.comprobarColor(color);
         this.comprobarConsumoEnergetico(consumoEnergetico);
 
     }
-   
-    public void precioFinal(char consumoEnergetico, double peso) {
-        double precioFinal = 0;
-        
+
+    public double precioFinal() {
+        double precioFinal = precio;
+
         switch (consumoEnergetico) {
             case 'A':
                 precioFinal += 1000;
+                break;
             case 'B':
                 precioFinal += 800;
+                break;
             case 'C':
                 precioFinal += 600;
+                break;
             case 'D':
                 precioFinal += 500;
+                break;
             case 'E':
                 precioFinal += 300;
+                break;
             case 'F':
                 precioFinal += 100;
+                break;
         }
         if (peso >= 1 && peso <= 19) {
             precioFinal += 100;
@@ -130,11 +132,10 @@ public class Electrodomestico {
         if (peso >= 50 && peso <= 79) {
             precioFinal += 800;
         }
-        if (peso > 80) {
+        if (peso >= 80) {
             precioFinal += 1000;
         }
-        
-        this.precio=precioFinal;
-        System.out.println("Precio Final es: "+this.precio);
+        System.out.println("precio final Electro: " + precioFinal);
+        return precioFinal;
     }
 }
