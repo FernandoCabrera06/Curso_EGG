@@ -5,6 +5,8 @@
  */
 package ejercicio02;
 
+
+import ejercicio03.*;
 import java.util.Scanner;
 
 /**
@@ -86,13 +88,13 @@ public class Electrodomestico {
 
         this.precio = 1000; //precio de base, 1000
 
-        System.out.println("Ingrese color: ");
+        System.out.print("Ingrese color: ");
         this.color = entrada.next();
 
-        System.out.println("Indique consumo energetico A ó F: ");
+        System.out.print("Indique consumo energetico A ó F: ");
         this.consumoEnergetico = entrada.next().charAt(0);
 
-        System.out.println("Ingrese peso: ");
+        System.out.print("Ingrese peso: ");
         this.peso = entrada.nextDouble();
 
         this.comprobarColor(color);

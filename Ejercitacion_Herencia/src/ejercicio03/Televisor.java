@@ -5,7 +5,6 @@
  */
 package ejercicio03;
 
-
 import java.util.Scanner;
 
 /**
@@ -20,10 +19,10 @@ public class Televisor extends Electrodomestico {
     public Televisor() {
     }
 
-    public Televisor(double resolucion, double precio, String color, char consumoEnergetico, double peso) {
+    public Televisor(double resolucion, boolean tdt, double precio, String color, char consumoEnergetico, double peso) {
         super(precio, color, consumoEnergetico, peso);
         this.resolucion = resolucion;
-        this.tdt = false;
+        this.tdt = tdt;
     }
 
     public double getResolucion() {
@@ -42,34 +41,22 @@ public class Televisor extends Electrodomestico {
         this.tdt = tdt;
     }
 
-    public void crearTelevisor() {
-        Scanner entrada = new Scanner(System.in).useDelimiter("\n");
-
-        super.crearElectrodomestico();
-
-        System.out.println("Ingrese resolución: ");
-
-        this.setResolucion(entrada.nextDouble());
-
-        System.out.println("Posee tdt? [S] para confirmar, otra letra para negar: ");
-
-        String respuestaTDT = entrada.next();
-        if (respuestaTDT.equalsIgnoreCase("S")) {
-            this.setTdt(true);
-        }
-    }
     @Override
-    public double precioFinal(){
-    double precioFinalTelevisor = super.precioFinal();
-    
-    if(this.resolucion > 40){
-    precioFinalTelevisor += ((precioFinalTelevisor/10)*3);
-    }
-     if(this.tdt){
-    precioFinalTelevisor += 500;
-    }
-    
-    return precioFinalTelevisor;
-    }
+    public double precioFinal() {
+        double precioFinalTelevisor = super.precioFinal();
+      
+        
+        if (this.resolucion > 40) {
+            precioFinalTelevisor += ((precioFinalTelevisor / 10) * 3);
+        }
+        if (this.tdt) {
+            precioFinalTelevisor += 500;
+        }
 
+        return precioFinalTelevisor;
+    }
+    //método que devuelve el precio base del electro.
+    public double precioElectro() {
+        return super.precioFinal();
+    }
 }

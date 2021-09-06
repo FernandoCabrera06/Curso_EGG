@@ -5,7 +5,6 @@
  */
 package ejercicio03;
 
-
 import java.util.Scanner;
 
 /**
@@ -35,23 +34,19 @@ public class Lavadora extends Electrodomestico {
     }
 
     //métodos
-    public void crearLavadora() {
-        Scanner entrada = new Scanner(System.in).useDelimiter("\n");
-
-        super.crearElectrodomestico();
-        System.out.println("Ingrese carga de la lavadora: ");
-
-        this.setCarga(entrada.nextInt());
-    }
-
-    
     @Override
-    public double precioFinal(){
-    double precioFinalLavadora = super.precioFinal();
-    
-    if(this.carga > 30){
-    precioFinalLavadora += 500;
+    public double precioFinal() {
+        double precioFinalLavadora = super.precioFinal();
+
+        if (this.carga > 30) {
+            precioFinalLavadora += 500;
+        }
+
+        return precioFinalLavadora;
     }
-    return precioFinalLavadora;
+
+    //método que devuelve el precio base del electro.
+    public double precioElectro() {
+        return super.precioFinal();
     }
 }

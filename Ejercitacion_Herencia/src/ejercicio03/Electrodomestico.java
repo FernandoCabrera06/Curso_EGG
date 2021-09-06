@@ -28,6 +28,8 @@ public class Electrodomestico {
         this.color = color;
         this.consumoEnergetico = consumoEnergetico;
         this.peso = peso;
+        this.comprobarColor(color);
+        this.comprobarConsumoEnergetico(consumoEnergetico);
     }
 
     //métodos
@@ -81,25 +83,6 @@ public class Electrodomestico {
         }
     }
 
-    public void crearElectrodomestico() {
-
-        Scanner entrada = new Scanner(System.in).useDelimiter("\n");
-
-        this.precio = 1000; //precio de base, 1000
-
-        System.out.println("Ingrese color: ");
-        this.color = entrada.next();
-
-        System.out.println("Indique consumo energetico A ó F: ");
-        this.consumoEnergetico = entrada.next().charAt(0);
-
-        System.out.println("Ingrese peso: ");
-        this.peso = entrada.nextDouble();
-
-        this.comprobarColor(color);
-        this.comprobarConsumoEnergetico(consumoEnergetico);
-
-    }
 
     public double precioFinal() {
         double precioFinal = precio;
@@ -136,7 +119,11 @@ public class Electrodomestico {
         if (peso >= 80) {
             precioFinal += 1000;
         }
-        System.out.println("precio final Electro: " + precioFinal);
+     
         return precioFinal;
+    }
+        //método que devuelve el precio base del electro.
+    public double precioElectro() {
+        return precioFinal();
     }
 }
